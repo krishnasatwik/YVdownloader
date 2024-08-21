@@ -1,4 +1,4 @@
 fastapi
-fastapi.responses 
-fastapi.staticfiles 
-yt_dlp
+uvicorn
+yt-dlp
+ffmpeg-python
