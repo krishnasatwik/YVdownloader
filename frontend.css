@@ -1,0 +1,55 @@
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .navbar-logo {
+    width: 45px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .navbar-title {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  h1 {
+    text-align: center;
+  }
+  .input-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; /* Keeps the input and button side by side */
+    padding: 20px; /* Add some padding to the input area */
+  }
+  input {
+    border: 2px solid orangered;
+    border-radius: 30px 0 0 30px;
+    padding: 15px;
+    height: 45px;
+    flex-grow: 1;
+    max-width: 600px;
+  }
+  button {
+    border: none;
+    border-radius: 0 30px 30px 0;
+    background-color: orangered;
+    color: white;
+    padding: 10px 20px;
+  }
+  button:hover {
+    background-color: black;
+  }
+  

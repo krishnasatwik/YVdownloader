@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Video Downloader</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .navbar {
+        background-color: #f8f9fa;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      .navbar-logo {
+        width: 45px;
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      .navbar-title {
+        font-size: 24px;
+        color: #333;
+        margin: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      .input-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap; /* Keeps the input and button side by side */
+        padding: 20px; /* Add some padding to the input area */
+      }
+
+      input {
+        border: 2px solid orangered;
+        border-radius: 20px 0 0 20px;
+        flex-grow: 1; /* Allows the input to grow and shrink */
+        min-width: 200px; /* Minimum width to prevent it from getting too small */
+        max-width: 600px; /* Maximum width on larger screens */
+        height: 40px;
+      }
+
+      button {
+        border: none;
+        border-radius: 0 30px 30px 0;
+        background-color: orangered;
+        color: white;
+        padding: 15px 30px;
+      }
+
+      button:hover {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-content">
+        <img src="/static/yc.png" alt="Logo" class="navbar-logo" />
+        <h1 class="navbar-title">YVdownloader</h1>
+      </div>
+    </nav>
+    <h1>DOWNLOAD YOUTUBE VIDEOS IN ONE CLICK</h1>
+    <div class="input-area">
+      <form id="download-form" enctype="application/x-www-form-urlencoded">
+        <input type="url" name="url" placeholder="Paste video link here" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script>
+      const form = document.getElementById("download-form");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        for (let [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
+
+        const response = await fetch("/download/", {
+          method: "POST",
+          body: new URLSearchParams(formData),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          alert(result.message);
+        } else {
+          alert("Error: " + result.error);
+        }
+      });
+    </script>
+  </body>
+</html>
